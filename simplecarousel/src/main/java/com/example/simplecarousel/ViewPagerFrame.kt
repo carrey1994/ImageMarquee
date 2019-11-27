@@ -10,6 +10,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.viewpager.widget.ViewPager
 
 
 class ViewPagerFrame : FrameLayout {
@@ -28,6 +29,11 @@ class ViewPagerFrame : FrameLayout {
     private val dotLayout = LinearLayout(context)
     lateinit var dots: List<ImageCarouselFrame.CircleDotView>
     private lateinit var viewpager: CarouselViewPager
+
+    fun setPageTransformer(boolean: Boolean, mAnim: ViewPager.PageTransformer) {
+        if (::viewpager.isInitialized)
+            viewpager.setPageTransformer(boolean, mAnim)
+    }
 
     fun setData(images: List<Int>) {
         imageList = arrayListOf<Int>().apply {
